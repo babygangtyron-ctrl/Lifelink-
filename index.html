@@ -1,50 +1,275 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>LifeLink</title>
-  <style>
-    body{
-      font-family: Arial, sans-serif;
-      margin:0;
-      background:#0f172a;
-      color:white;
-      text-align:center;
-    }
-    .hero{
-      padding:60px 20px;
-    }
-    h1{
-      color:#22c55e;
-      font-size:42px;
-    }
-    p{
-      color:#cbd5e1;
-    }
-    .btn{
-      display:inline-block;
-      margin-top:20px;
-      padding:14px 24px;
-      background:#22c55e;
-      color:white;
-      text-decoration:none;
-      border-radius:10px;
-      font-weight:bold;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LifeLink</title>
+
+<style>
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  background: #0f172a;
+  color: white;
+  text-align: center;
+}
+
+.hero {
+  padding: 80px 20px;
+}
+
+h1 {
+  color: #22c55e;
+  font-size: 48px;
+}
+
+p {
+  color: #cbd5e1;
+  font-size: 19px;
+}
+
+.btn {
+  display: inline-block;
+  padding: 16px 25px;
+  margin: 15px;
+  background: #22c55e;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 18px;
+  font-weight: bold;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+#setup {
+  display: none;
+  padding: 30px 20px;
+}
+
+input {
+  display: block;
+  width: 85%;
+  max-width: 350px;
+  padding: 14px;
+  margin: 15px auto;
+  border-radius: 8px;
+  border: none;
+  font-size: 16px;
+}
+
+#message {
+  color: #22c55e;
+  padding: 15px;
+}
+</style>
 </head>
+
 <body>
-  <div class="hero">
-    <h1>LifeLink</h1>
-    <p>Your emergency connection when every second matters.</p>
-    <a href="#emergency-help" class="btn">Get Started</a>
-  </div>
+
+<div class="hero" id="home">
+  <h1>LifeLink</h1>
+  <p>Your emergency connection when every second matters.</p>
+
+  <button class="btn" onclick="showSetup()">
+    Get Started
+  </button>
+</div>
+
+<div id="setup">
+  <h2>Emergency Registration</h2>
+  <p>Enter your emergency contact details.</p>
+
+  <form onsubmit="register(event)">
+    <input type="text" placeholder="Your full name" required>
+    <input type="tel" placeholder="Your phone number" required>
+    <input type="text" placeholder="Emergency contact name" required>
+    <input type="tel" placeholder="Emergency contact number" required>
+
+    <button class="btn" type="submit">
+      Complete Setup
+    </button>
+  </form>
+
+  <p id="message"></p>
+
+  <button class="btn" onclick="goHome()">
+    Back to Home
+  </button>
+</div>
+
+<div id="emergency">
+  <h2>Emergency Help</h2>
+  <p>Choose what you need help with.</p>
+
+  <a class="btn" href="tel:112">
+    Call Emergency Services (112)
+  </a>
+
+  <p>In South Africa, use 112 from a cellphone for emergencies.</p>
+</div>
+
+<script>
+function showSetup() {
+  document.getElementById("home").style.display = "none";
+  document.getElementById("emergency").style.display = "none";
+  document.getElementById("setup").style.display = "block";
+  window.scrollTo(0, 0);
+}
+
+function goHome() {
+  document.getElementById("setup").style.display = "none";
+  document.getElementById("home").style.display = "block";
+  document.getElementById("emergency").style.display = "block";
+  document.getElementById("message").textContent = "";
+  window.scrollTo(0, 0);
+}
+
+function register(event) {
+  event.preventDefault();
+  document.getElementById("message").textContent =
+    "Your details have been entered! This demo does not save or send your information yet.";
+}
+</script>
+
 </body>
 </html>
-<section id="emergency" style="padding:30px 20px;text-align:center;color:white;">
-  <h2 id="emergency-help">Emergency Help</h2>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LifeLink</title>
+
+<style>
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  background: #0f172a;
+  color: white;
+  text-align: center;
+}
+
+.hero {
+  padding: 80px 20px;
+}
+
+h1 {
+  color: #22c55e;
+  font-size: 48px;
+}
+
+p {
+  color: #cbd5e1;
+  font-size: 19px;
+}
+
+.btn {
+  display: inline-block;
+  padding: 16px 25px;
+  margin: 15px;
+  background: #22c55e;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 18px;
+  font-weight: bold;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+#setup {
+  display: none;
+  padding: 30px 20px;
+}
+
+input {
+  display: block;
+  width: 85%;
+  max-width: 350px;
+  padding: 14px;
+  margin: 15px auto;
+  border-radius: 8px;
+  border: none;
+  font-size: 16px;
+}
+
+#message {
+  color: #22c55e;
+  padding: 15px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="hero" id="home">
+  <h1>LifeLink</h1>
+  <p>Your emergency connection when every second matters.</p>
+
+  <button class="btn" onclick="showSetup()">
+    Get Started
+  </button>
+</div>
+
+<div id="setup">
+  <h2>Emergency Registration</h2>
+  <p>Enter your emergency contact details.</p>
+
+  <form onsubmit="register(event)">
+    <input type="text" placeholder="Your full name" required>
+    <input type="tel" placeholder="Your phone number" required>
+    <input type="text" placeholder="Emergency contact name" required>
+    <input type="tel" placeholder="Emergency contact number" required>
+
+    <button class="btn" type="submit">
+      Complete Setup
+    </button>
+  </form>
+
+  <p id="message"></p>
+
+  <button class="btn" onclick="goHome()">
+    Back to Home
+  </button>
+</div>
+
+<div id="emergency">
+  <h2>Emergency Help</h2>
   <p>Choose what you need help with.</p>
-  <a class="btn" href="tel:112">Call Emergency Services (112)</a>
+
+  <a class="btn" href="tel:112">
+    Call Emergency Services (112)
+  </a>
+
   <p>In South Africa, use 112 from a cellphone for emergencies.</p>
-</section>
+</div>
+
+<script>
+function showSetup() {
+  document.getElementById("home").style.display = "none";
+  document.getElementById("emergency").style.display = "none";
+  document.getElementById("setup").style.display = "block";
+  window.scrollTo(0, 0);
+}
+
+function goHome() {
+  document.getElementById("setup").style.display = "none";
+  document.getElementById("home").style.display = "block";
+  document.getElementById("emergency").style.display = "block";
+  document.getElementById("message").textContent = "";
+  window.scrollTo(0, 0);
+}
+
+function register(event) {
+  event.preventDefault();
+  document.getElementById("message").textContent =
+    "Your details have been entered! This demo does not save or send your information yet.";
+}
+</script>
+
+</body>
+</html>
+
